@@ -63,6 +63,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+
         $is_admin = false;
         if (User::count() == 0) {
             $is_admin = true;

@@ -6,6 +6,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Redis;
 
 class UserController extends Controller
 {
@@ -66,5 +67,11 @@ class UserController extends Controller
     {
         $user->delete();
         return redirect('users');
+    }
+
+    function toggle(Request $request) {
+        $status = $request->get('status');
+        Redis::set('trojan.register', $status);
+        return ['status' => 'ok'];
     }
 }

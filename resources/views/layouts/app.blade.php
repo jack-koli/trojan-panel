@@ -84,5 +84,6 @@
             @yield('content')
         </main>
     </div>
+@yield('after_js')
 </body>
 </html>
